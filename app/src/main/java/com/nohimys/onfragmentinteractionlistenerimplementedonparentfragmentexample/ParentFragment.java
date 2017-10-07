@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -19,7 +20,7 @@ import android.view.ViewGroup;
  * Use the {@link ParentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ParentFragment extends Fragment {
+public class ParentFragment extends Fragment implements ChildFragment.OnChildFragmentInteractionByParentFragmentListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -100,6 +101,12 @@ public class ParentFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onChildFragmentInteraction(Uri uri) {
+        //The message will be passed to here from the ChildFragment
+        Toast.makeText(getContext() ,"Message from ChildFragment is passed to ParentFragment.",Toast.LENGTH_SHORT).show();
     }
 
     /**
