@@ -3,10 +3,12 @@ package com.nohimys.onfragmentinteractionlistenerimplementedonparentfragmentexam
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -28,6 +30,9 @@ public class ChildFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private Button buttonMessageToParentFragment;
+    private Button buttonMessageToActivity;
 
     public ChildFragment() {
         // Required empty public constructor
@@ -67,12 +72,34 @@ public class ChildFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_child, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        buttonMessageToParentFragment = (Button)view.findViewById(R.id.button_messageToParentFragment);
+        buttonMessageToActivity = (Button)view.findViewById(R.id.button_messageToActivity);
+
+        buttonMessageToParentFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        buttonMessageToActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
+
+    // TODO: Rename method, update argument and hook method into UI event
+//    public void onButtonPressed(Uri uri) {
+//        if (mListener != null) {
+//            mListener.onFragmentInteraction(uri);
+//        }
+//    }
 
     @Override
     public void onAttach(Context context) {
