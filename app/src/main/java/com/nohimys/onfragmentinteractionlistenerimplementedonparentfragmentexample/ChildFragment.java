@@ -105,12 +105,25 @@ public class ChildFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        if (context instanceof OnChildFragmentInteractionByParentFragmentListener) {
-//            onChildFragmentInteractionByParentFragmentListener = (OnChildFragmentInteractionByParentFragmentListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnChildFragmentInteractionByParentFragmentListener");
-//        }
+
+        //Check whether the Activity implements this listener interface
+        //If it has assign it to the instance variable
+        //If it hasn't throw an exception
+        if (context instanceof OnChildFragmentInteractionByActivityListener) {
+            onChildFragmentInteractionByActivityListener = (OnChildFragmentInteractionByActivityListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " OnChildFragmentInteractionByActivityListener must be implemented by the Activity.");
+        }
+
+        //Check whether the Parent Fragment implements this listener interface
+        //If it has assign it to the instance variable
+        //If it hasn't throw an exception
+        if (getParentFragment() instanceof OnChildFragmentInteractionByParentFragmentListener) {
+            onChildFragmentInteractionByParentFragmentListener = (OnChildFragmentInteractionByParentFragmentListener) getParentFragment();
+        } else {
+            throw new RuntimeException(" OnChildFragmentInteractionByParentFragmentListener must be implemented by the Parent Fragment.");
+        }
     }
 
     @Override
