@@ -83,14 +83,14 @@ public class ChildFragment extends Fragment {
         buttonMessageToParentFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onChildFragmentInteractionByParentFragmentListener.onChildFragmentInteraction(null);
             }
         });
 
         buttonMessageToActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onChildFragmentInteractionByActivityListener.onChildFragmentInteraction(null);
             }
         });
     }
