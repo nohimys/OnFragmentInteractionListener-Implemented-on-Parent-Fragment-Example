@@ -74,7 +74,7 @@ public class ParentFragment extends Fragment implements ChildFragment.OnChildFra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
         ft.replace(R.id.frameLayout_ChildFragmentArea, new ChildFragment());
         ft.commit();
     }
